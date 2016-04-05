@@ -18,7 +18,7 @@ public abstract class IP {
     }
 
     public void setQuadOne(int quadOne) throws IpException {
-        if (quadOne > 255){
+        if (quadOne > 255 || quadOne < 0){
             throw new IpException("Quad one exceeds limit");
         } else {
             this.quadOne = quadOne;
@@ -30,7 +30,7 @@ public abstract class IP {
     }
 
     public void setQuadTwo(int quadTwo) throws IpException {
-        if (quadTwo > 255){
+        if (quadTwo > 255 || quadTwo < 0){
             throw new IpException("Quad two exceeds limit");
         } else {
             this.quadTwo = quadTwo;
@@ -42,7 +42,7 @@ public abstract class IP {
     }
 
     public void setQuadThree(int quadThree) throws IpException {
-        if (quadThree > 255){
+        if (quadThree > 255 || quadThree < 0){
             throw new IpException("Quad three exceeds limit");
         } else {
             this.quadThree = quadThree;
@@ -54,7 +54,7 @@ public abstract class IP {
     }
 
     public void setQuadFour(int quadFour) throws IpException {
-        if (quadFour > 255){
+        if (quadFour > 255 || quadFour < 0){
             throw new IpException("Quad four exceeds limit");
         } else {
             this.quadFour = quadFour;
@@ -63,6 +63,11 @@ public abstract class IP {
 
     @Override
     public String toString() {
-        return String.format("%d.%d.%d.%d",this.getQuadOne(),this.getQuadTwo(),this.getQuadThree(),this.getQuadFour());
+        return String.format(
+                "IP: %d.%d.%d.%d",
+                this.getQuadOne(),
+                this.getQuadTwo(),
+                this.getQuadThree(),
+                this.getQuadFour());
     }
 }
