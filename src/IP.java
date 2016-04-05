@@ -2,7 +2,7 @@
  * Created by raulmartinez on 4/4/16.
  */
 public abstract class IP {
-    protected int quadOne,quadTwo,quadThree,quadFour;
+    private int quadOne,quadTwo,quadThree,quadFour;
 
     public IP() { }
 

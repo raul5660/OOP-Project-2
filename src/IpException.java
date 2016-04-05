@@ -7,5 +7,6 @@ public class IpException extends Exception {
 
     public IpException(String message) {
         super(message);
+        new ErrorGui(message).setVisible(true);
     }
 }
