@@ -9,7 +9,7 @@ public class WildCardMask extends IP {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
 
-    public SubnetMask WildcardMaskToSubnetMask() throws IpException {
+    public SubnetMask WildcardMaskToSubnetMask() throws IpException, InvalidSubnetException {
         return new SubnetMask(
                 255+this.getQuadOne(),
                 255+this.getQuadTwo(),

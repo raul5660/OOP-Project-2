@@ -5,7 +5,7 @@ public class SubnetMask extends IP {
 
     public SubnetMask() { }
 
-    public SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException {
+    public SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
 
