@@ -5,7 +5,7 @@ public class IpAddress extends IP {
 
     public IpAddress() { }
 
-    public IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException {
+    public IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
 

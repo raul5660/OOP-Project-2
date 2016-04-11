@@ -5,7 +5,7 @@ public class WildCardMask extends IP {
 
     public WildCardMask() { }
 
-    public WildCardMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException {
+    public WildCardMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
 
