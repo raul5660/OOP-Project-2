@@ -7,12 +7,12 @@ public class SubnetMask extends IP {
 
     public SubnetMask() { }
 
-    public SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException {
+    public SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
 
     @Override
-    public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException {
+    public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
         int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
         if (SubnetMask.contains(acceptableIntegers,quadOne)) {
             super.setQuadOne(quadOne);
@@ -22,7 +22,7 @@ public class SubnetMask extends IP {
     }
 
     @Override
-    public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException {
+    public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
         int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
         if (SubnetMask.contains(acceptableIntegers,quadTwo)) {
             super.setQuadTwo(quadTwo);
@@ -32,7 +32,7 @@ public class SubnetMask extends IP {
     }
 
     @Override
-    public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException {
+    public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
         int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
         if (SubnetMask.contains(acceptableIntegers,quadThree)) {
             super.setQuadThree(quadThree);
@@ -42,7 +42,7 @@ public class SubnetMask extends IP {
     }
 
     @Override
-    public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException {
+    public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
         if (SubnetMask.contains(acceptableIntegers,quadFour)) {
             super.setQuadFour(quadFour);
@@ -52,7 +52,7 @@ public class SubnetMask extends IP {
     }
 
 
-    public WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException {
+    public WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new WildCardMask(
                 255-this.getQuadOne(),
                 255-this.getQuadTwo(),

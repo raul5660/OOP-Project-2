@@ -41,7 +41,7 @@ public class GUI extends javax.swing.JFrame {
             try {
                 IpAddress ipAddress = new IpAddress(ipAddressQuadOne, ipAddressQuadTwo, ipAddressQuadThree, ipAddressQuadFour);
                 SubnetMask subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
-                WildCardMask wildCardMask = new WildCardMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
+                WildCardMask wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
             } catch (Exception e) { }
 
         } catch (NumberFormatException e) {

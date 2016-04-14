@@ -6,7 +6,7 @@ public abstract class IP {
 
     public IP() { }
 
-    public IP(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException {
+    public IP(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         this.setQuadOne(quadOne);
         this.setQuadTwo(quadTwo);
         this.setQuadThree(quadThree);
@@ -17,7 +17,7 @@ public abstract class IP {
         return quadOne;
     }
 
-    public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException {
+    public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadOne > 255 || quadOne < 0){
             throw new IpException("Quad one exceeds limit");
         } else {
@@ -29,7 +29,7 @@ public abstract class IP {
         return quadTwo;
     }
 
-    public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException {
+    public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadTwo > 255 || quadTwo < 0){
             throw new IpException("Quad two exceeds limit");
         } else {
@@ -41,7 +41,7 @@ public abstract class IP {
         return quadThree;
     }
 
-    public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException {
+    public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadThree > 255 || quadThree < 0){
             throw new IpException("Quad three exceeds limit");
         } else {
@@ -53,7 +53,7 @@ public abstract class IP {
         return quadFour;
     }
 
-    public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException {
+    public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadFour > 255 || quadFour < 0){
             throw new IpException("Quad four exceeds limit");
         } else {
