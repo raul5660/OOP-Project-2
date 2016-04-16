@@ -112,6 +112,7 @@ public class GUI extends javax.swing.JFrame {
             			&& (WildcardMaskQuadOne.getText().equals("") && WildcardMaskQuadTwo.getText().equals("") && WildcardMaskQuadThree.getText().equals("") && WildcardMaskQuadFour.getText().equals(""))){
             		subnetToWildCard();
             	}
+            	NetworkRange();
             	CalculateActionPerformed(evt);
             }
         });
@@ -124,7 +125,7 @@ public class GUI extends javax.swing.JFrame {
 
         BroadcastLabel.setText("Boardcast Address:");
 
-        NetworkRangeOutputLabel.setText("0.0.0.0 - 0.0.0.0");
+        NetworkRangeOutputLabel.setText(NetRange);
 
         NetworkClassOutputLabel.setText("A, B, C");
 
@@ -261,6 +262,31 @@ public class GUI extends javax.swing.JFrame {
     		SubnetMaskQuadFour.setText("" + (255 - Integer.parseInt(WildcardMaskQuadFour.getText())));
     	}
     }
+    
+    void NetworkRange(){
+    	NetRange = IpAddressQuadOne.getText() + "." + IpAddressQuadTwo.getText() + "." + IpAddressQuadThree.getText() + "." + IpAddressQuadFour.getText() + " - " + IpAddressQuadOne.getText();
+    	if (Integer.parseInt(SubnetMaskQuadTwo.getText()) == 255)
+    		NetRange +=  "." + IpAddressQuadTwo.getText();
+    	else{
+    		NetRange += "." + (Integer.parseInt(IpAddressQuadTwo.getText()) + 31);
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadThree.getText()));
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+    		NetworkRangeOutputLabel.setText(NetRange);
+    		return;
+    	}
+    	if (Integer.parseInt(SubnetMaskQuadThree.getText()) == 255)
+    		NetRange += IpAddressQuadThree.getText();
+    	else{
+    		NetRange += "." + (Integer.parseInt(IpAddressQuadThree.getText()) + 31);
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+    		NetworkRangeOutputLabel.setText(NetRange);
+    		return;
+    	}
+    	NetRange += "." + (Integer.parseInt(IpAddressQuadFour.getText()) + 31);
+    	NetworkRangeOutputLabel.setText(NetRange);
+    }
+    
+    String NetRange = "0.0.0.0 - 0.0.0.0"; //Used to accurately pass the network range between functions
     // Variables declaration - do not modify
     private javax.swing.JLabel BroadcastLabel;
     private javax.swing.JLabel BroadcastOutputLabel;
