@@ -6,6 +6,11 @@ import java.util.Arrays;
  * Description:
  */
 class SubnetMask extends IP {
+    public int getNetmaskNumeric() {
+        return netmaskNumeric;
+    }
+
+    private int netmaskNumeric;
     /*
      * Name:
      * Type:
@@ -14,6 +19,40 @@ class SubnetMask extends IP {
      */
     SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
+        String[] st = this.toString().split("\\.");
+        if (st.length != 4)
+            throw new InvalidSubnetException("Invalid netmask address: "
+                    + this.toString());
+
+        int i = 24;
+        netmaskNumeric = 0;
+        if (Integer.parseInt(st[0]) < 255) {
+            throw new InvalidSubnetException(
+                    "The first byte of netmask can not be less than 255");
+        }
+        for (int n = 0; n < st.length; n++) {
+            int value = Integer.parseInt(st[n]);
+            if (value != (value & 0xff)) {
+                throw new InvalidSubnetException("Invalid netmask address: "
+                        + this.toString());
+            }
+
+            netmaskNumeric += value << i;
+            i -= 8;
+        }
+        boolean encounteredOne = false;
+        int ourMaskBitPattern = 1;
+        for (i = 0; i < 32; i++) {
+            if ((netmaskNumeric & ourMaskBitPattern) != 0) {
+                encounteredOne = true; // the bit is 1
+            } else { // the bit is 0
+                if (encounteredOne == true)
+                    throw new NumberFormatException("Invalid netmask: "
+                            + this.toString() + " (bit " + (i + 1) + ")");
+            }
+
+            ourMaskBitPattern = ourMaskBitPattern << 1;
+        }
     }
     /*
      * Name:
@@ -23,12 +62,7 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
-        int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
-        if (SubnetMask.contains(acceptableIntegers,quadOne)) {
             super.setQuadOne(quadOne);
-        } else {
-            throw new InvalidSubnetException("Quad One must be "+Arrays.toString(acceptableIntegers));
-        }
     }
     /*
      * Name:
@@ -38,12 +72,7 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
-        int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
-        if (SubnetMask.contains(acceptableIntegers,quadTwo)) {
                 super.setQuadTwo(quadTwo);
-        } else {
-            throw new InvalidSubnetException("Quad Two must be "+Arrays.toString(acceptableIntegers));
-        }
     }
     /*
      * Name:
@@ -53,12 +82,7 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
-        int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
-        if (SubnetMask.contains(acceptableIntegers,quadThree)) {
                 super.setQuadThree(quadThree);
-        } else {
-            throw new InvalidSubnetException("Quad Three must be "+Arrays.toString(acceptableIntegers));
-        }
     }
     /*
      * Name:
@@ -68,12 +92,7 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
-        int[] acceptableIntegers = {255, 254, 252, 248, 240, 224, 192, 128, 0};
-        if (SubnetMask.contains(acceptableIntegers,quadFour)) {
                 super.setQuadFour(quadFour);
-        } else {
-            throw new InvalidSubnetException("Quad Four must be "+Arrays.toString(acceptableIntegers));
-        }
     }
     /*
      * Name:
@@ -83,10 +102,10 @@ class SubnetMask extends IP {
      */
     public WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new WildCardMask(
-                255-this.getQuadOne(),
-                255-this.getQuadTwo(),
-                255-this.getQuadThree(),
-                255-this.getQuadFour());
+                Integer.parseInt(invertBits(toBits(this.getQuadOne())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadTwo())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadThree())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadFour())),2));
     }
     /*
      * Name:

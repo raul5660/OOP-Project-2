@@ -151,9 +151,17 @@ class GUI extends javax.swing.JFrame {
                     } catch (Exception e) { }
                 }
 
-                NetworkRange();
+
                 CalculateActionPerformed(evt);
                 NetworkClassOutputLabel.setText(subnetMask.ClassType());
+                try {
+                    NetworkRangeOutputLabel.setText(ipAddress.NetworkRange(subnetMask));
+                    SubnetIDOutputLabel.setText(ipAddress.NetworkID(subnetMask));
+                    BroadcastOutputLabel.setText(ipAddress.BroadcastAddress(subnetMask));
+                } catch (Exception ignored)
+                {
+
+                }
             }
         });
 
@@ -161,7 +169,7 @@ class GUI extends javax.swing.JFrame {
 
         NetworkClassLabel.setText("Network Class:");
 
-        SubnetIDLabel.setText("Subnet ID:");
+        SubnetIDLabel.setText("Network ID:");
 
         BroadcastLabel.setText("Boardcast Address:");
 
@@ -282,29 +290,6 @@ class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
-
-    void NetworkRange(){
-        NetRange = IpAddressQuadOne.getText() + "." + IpAddressQuadTwo.getText() + "." + IpAddressQuadThree.getText() + "." + IpAddressQuadFour.getText() + " - " + IpAddressQuadOne.getText();
-        if (Integer.parseInt(SubnetMaskQuadTwo.getText()) == 255)
-            NetRange +=  "." + IpAddressQuadTwo.getText();
-        else{
-            NetRange += "." + (Integer.parseInt(IpAddressQuadTwo.getText()) + 31);
-            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadThree.getText()));
-            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
-            NetworkRangeOutputLabel.setText(NetRange);
-            return;
-        }
-        if (Integer.parseInt(SubnetMaskQuadThree.getText()) == 255)
-            NetRange += IpAddressQuadThree.getText();
-        else{
-            NetRange += "." + (Integer.parseInt(IpAddressQuadThree.getText()) + 31);
-            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
-            NetworkRangeOutputLabel.setText(NetRange);
-            return;
-        }
-        NetRange += "." + (Integer.parseInt(IpAddressQuadFour.getText()) + 31);
-        NetworkRangeOutputLabel.setText(NetRange);
-    }
 
     String NetRange = "0.0.0.0 - 0.0.0.0"; //Used to accurately pass the network range between functions
     IpAddress ipAddress;

@@ -123,4 +123,54 @@ abstract class IP {
                 this.getQuadThree(),
                 this.getQuadFour());
     }
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
+    public static String invertBits(String bits) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char bit : bits.toCharArray()){
+            switch (bit){
+                case '0':
+                    stringBuilder.append("1");
+                    break;
+                case '1':
+                    stringBuilder.append("0");
+                    break;
+            }
+        }
+        return stringBuilder.toString();
+    }
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
+    public static String toBits(int x)
+    {
+        return pad(Integer.toBinaryString(x));
+    }
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
+    private static String pad(String num) {
+        char[] tmp = num.toCharArray();
+        if (tmp.length < 8)
+        {
+            int padding = 8 - tmp.length;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(num);
+            for(int i = 0; i < padding; i++) {
+                stringBuilder.append("0");
+            }
+            return stringBuilder.toString();
+        }
+        return num;
+    }
 }
