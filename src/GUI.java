@@ -103,6 +103,15 @@ public class GUI extends javax.swing.JFrame {
         Calculate.setText("Calculate");
         Calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	if ((SubnetMaskQuadOne.getText().equals("") && SubnetMaskQuadTwo.getText().equals("") && SubnetMaskQuadThree.getText().equals("") && SubnetMaskQuadFour.getText().equals(""))
+            			&& (!WildcardMaskQuadOne.getText().equals("") && !WildcardMaskQuadTwo.getText().equals("") && !WildcardMaskQuadThree.getText().equals("") && !WildcardMaskQuadFour.getText().equals(""))){//added calls to calculate masks and required condigtions
+            		wildCardToSubnet();
+            	}
+            	else if ((!SubnetMaskQuadOne.getText().equals("") && !SubnetMaskQuadTwo.getText().equals("") && !SubnetMaskQuadThree.getText().equals("") && !SubnetMaskQuadFour.getText().equals(""))
+            			&& (WildcardMaskQuadOne.getText().equals("") && WildcardMaskQuadTwo.getText().equals("") && WildcardMaskQuadThree.getText().equals("") && WildcardMaskQuadFour.getText().equals(""))){
+            		subnetToWildCard();
+            	}
+            	NetworkRange();
                 CalculateActionPerformed(evt);
             }
         });
@@ -115,7 +124,7 @@ public class GUI extends javax.swing.JFrame {
 
         BroadcastLabel.setText("Boardcast Address:");
 
-        NetworkRangeOutputLabel.setText("0.0.0.0 - 0.0.0.0");
+        NetworkRangeOutputLabel.setText(NetRange);//passed a variable containing a string instead of just a string
 
         NetworkClassOutputLabel.setText("A, B, C");
 
@@ -232,8 +241,54 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
+    
+    
+    //funcitons Charles added
+    void subnetToWildCard(){//function to calculate wildcard from subnet
 
+    	for (int i = 0; i < 9; i++){
+    		WildcardMaskQuadOne.setText("" + (255 - Integer.parseInt(SubnetMaskQuadOne.getText())));
+    		WildcardMaskQuadTwo.setText("" + (255 - Integer.parseInt(SubnetMaskQuadTwo.getText())));
+    		WildcardMaskQuadThree.setText("" + (255 - Integer.parseInt(SubnetMaskQuadThree.getText())));
+    		WildcardMaskQuadFour.setText("" + (255 - Integer.parseInt(SubnetMaskQuadFour.getText())));
+    	}
+    }
+    
+    void wildCardToSubnet(){//function to calculate subnet from wildcard
+    	
+    	for (int i = 0; i < 9; i++){
+    		SubnetMaskQuadOne.setText("" + (255 - Integer.parseInt(WildcardMaskQuadOne.getText())));
+    		SubnetMaskQuadTwo.setText("" + (255 - Integer.parseInt(WildcardMaskQuadTwo.getText())));
+    		SubnetMaskQuadThree.setText("" + (255 - Integer.parseInt(WildcardMaskQuadThree.getText())));
+    		SubnetMaskQuadFour.setText("" + (255 - Integer.parseInt(WildcardMaskQuadFour.getText())));
+    	}
+    }
+    
+    void NetworkRange(){//function to calculate network range
+    	NetRange = IpAddressQuadOne.getText() + "." + IpAddressQuadTwo.getText() + "." + IpAddressQuadThree.getText() + "." + IpAddressQuadFour.getText() + " - " + IpAddressQuadOne.getText();
+    	if (Integer.parseInt(SubnetMaskQuadTwo.getText()) == 255)
+    		NetRange +=  "." + IpAddressQuadTwo.getText();
+    	else{
+    		NetRange += "." + (Integer.parseInt(IpAddressQuadTwo.getText()) + 31);
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadThree.getText()));
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+    		NetworkRangeOutputLabel.setText(NetRange);
+    		return;
+    	}
+    	if (Integer.parseInt(SubnetMaskQuadThree.getText()) == 255)
+    		NetRange += IpAddressQuadThree.getText();
+    	else{
+    		NetRange += "." + (Integer.parseInt(IpAddressQuadThree.getText()) + 31);
+    		NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+    		NetworkRangeOutputLabel.setText(NetRange);
+    		return;
+    	}
+    	NetRange += "." + (Integer.parseInt(IpAddressQuadFour.getText()) + 31);
+    	NetworkRangeOutputLabel.setText(NetRange);
+    }
+    //end functions to calculate network range and subnets
 
+    String NetRange = "0.0.0.0 - 0.0.0.0"; //Used to accurately pass the network range between functions
     // Variables declaration - do not modify
     private javax.swing.JLabel BroadcastLabel;
     private javax.swing.JLabel BroadcastOutputLabel;
