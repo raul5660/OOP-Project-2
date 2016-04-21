@@ -101,7 +101,7 @@ class WildCardMask extends IP {
     @Override
     public String toString() {
         return String.format(
-                "Wildcard Mask: %d.%d.%d.%d",
+                "%d.%d.%d.%d",
                 this.getQuadOne(),
                 this.getQuadTwo(),
                 this.getQuadThree(),

@@ -17,7 +17,7 @@ class IpAddress extends IP {
     @Override
     public String toString() {
         return String.format(
-                "IP Address: %d.%d.%d.%d",
+                "%d.%d.%d.%d",
                 this.getQuadOne(),
                 this.getQuadTwo(),
                 this.getQuadThree(),
