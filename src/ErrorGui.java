@@ -1,17 +1,35 @@
-/**
- * Created by raulmartinez on 4/4/16.
+/*
+ * Name:
+ * Type:
+ * Arguments:
+ * Description:
  */
 public class ErrorGui extends javax.swing.JFrame {
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     public ErrorGui(String Error) {
         initComponents();
         jTextArea1.setText(Error);
     }
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
     }
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {

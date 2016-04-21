@@ -1,14 +1,25 @@
-/**
- * Created by raulmartinez on 4/4/16.
+/*
+ * Name:
+ * Type:
+ * Arguments:
+ * Description:
  */
 public class GUI extends javax.swing.JFrame {
-    /**
-     * Creates new form NewJFrame
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
      */
     public GUI() {
         initComponents();
     }
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     private void CalculateActionPerformed(java.awt.event.ActionEvent evt){
         int ipAddressQuadOne,
                 ipAddressQuadTwo,
@@ -28,7 +39,12 @@ public class GUI extends javax.swing.JFrame {
             new ErrorGui("Error " + e.getMessage()).setVisible(true);
         }
     }
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {

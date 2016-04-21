@@ -1,10 +1,23 @@
-/**
- * Created by raulmartinez on 4/4/16.
+/*
+ * Name:
+ * Type:
+ * Arguments:
+ * Description:
  */
 public class IpException extends Exception {
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     public IpException() { }
-
+    /*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
     public IpException(String message) {
         super(message);
         new ErrorGui(message).setVisible(true);

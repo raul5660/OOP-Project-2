@@ -1,10 +1,18 @@
 /*
- * created by Charles Miller 4/18/2016
+ * Name:
+ * Type:
+ * Arguments:
+ * Description:
  */
 public class InvalidSubnetException extends Exception {
-
-	    public InvalidSubnetException(String message) {
-	        super(message);
-	        new ErrorGui(message).setVisible(true);
-	    }
+	/*
+     * Name:
+     * Type:
+     * Arguments:
+     * Description:
+     */
+    public InvalidSubnetException(String message) {
+        super(message);
+        new ErrorGui(message).setVisible(true);
+    }
 }

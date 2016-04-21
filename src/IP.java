@@ -1,6 +1,3 @@
-/**
- * Created by raulmartinez on 4/4/16.
- */
 
 /*
  * Name:
