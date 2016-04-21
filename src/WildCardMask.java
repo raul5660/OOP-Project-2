@@ -21,7 +21,7 @@ public class WildCardMask extends IP {
 
 
     public void setQuadOne(int q1) throws IpException, InvalidWildCardException, InvalidSubnetException{
-        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 0};
+        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 255};
         if (WildCardMask.has(acceptableIntegers, q1)){
             super.setQuadOne(q1);
         }
@@ -31,9 +31,9 @@ public class WildCardMask extends IP {
     }
 
     public void setQuadTwo(int q2) throws IpException, InvalidSubnetException, InvalidWildCardException{
-        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 0};
+        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 255};
         if (WildCardMask.has(acceptableIntegers, q2)){
-            super.setQuadOne(q2);
+            super.setQuadTwo(q2);
         }
         else{
             throw new InvalidWildCardException("WildCard two must be " + Arrays.toString(acceptableIntegers));
@@ -41,9 +41,9 @@ public class WildCardMask extends IP {
     }
 
     public void setQuadThree(int q3) throws IpException, InvalidSubnetException, InvalidWildCardException{
-        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 0};
+        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 255};
         if (WildCardMask.has(acceptableIntegers, q3)){
-            super.setQuadOne(q3);
+            super.setQuadThree(q3);
         }
         else{
             throw new InvalidWildCardException("WildCard three must be " + Arrays.toString(acceptableIntegers));
@@ -51,9 +51,9 @@ public class WildCardMask extends IP {
     }
 
     public void setQuadFour(int q4) throws IpException, InvalidSubnetException, InvalidWildCardException{
-        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 0};
+        int[] acceptableIntegers = {0, 1, 3, 7, 15, 31, 63, 127, 255};
         if (WildCardMask.has(acceptableIntegers, q4)){
-            super.setQuadOne(q4);
+            super.setQuadFour(q4);
         }
         else{
             throw new InvalidWildCardException("WildCard four must be " + Arrays.toString(acceptableIntegers));

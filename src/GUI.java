@@ -11,37 +11,17 @@ public class GUI extends javax.swing.JFrame {
 
     private void CalculateActionPerformed(java.awt.event.ActionEvent evt){
         int ipAddressQuadOne,
-            ipAddressQuadTwo,
-            ipAddressQuadThree,
-            ipAddressQuadFour,
-            subnetMaskQuadOne,
-            subnetMaskQuadTwo,
-            subnetMaskQuadThree,
-            subnetMaskQuadFour,
-            wildcardQuadOne,
-            wildcardQuadTwo,
-            wildcardQuadThree,
-            wildcardQuadFour;
+                ipAddressQuadTwo,
+                ipAddressQuadThree,
+                ipAddressQuadFour;
         try {
 
             ipAddressQuadOne    = Integer.parseInt(IpAddressQuadOne.getText());
             ipAddressQuadTwo    = Integer.parseInt(IpAddressQuadTwo.getText());
             ipAddressQuadThree  = Integer.parseInt(IpAddressQuadThree.getText());
             ipAddressQuadFour   = Integer.parseInt(IpAddressQuadFour.getText());
-            subnetMaskQuadOne   = Integer.parseInt(SubnetMaskQuadOne.getText());
-            subnetMaskQuadTwo   = Integer.parseInt(SubnetMaskQuadTwo.getText());
-            subnetMaskQuadThree = Integer.parseInt(SubnetMaskQuadThree.getText());
-            subnetMaskQuadFour  = Integer.parseInt(SubnetMaskQuadFour.getText());
-            wildcardQuadOne     = Integer.parseInt(WildcardMaskQuadOne.getText());
-            wildcardQuadTwo     = Integer.parseInt(WildcardMaskQuadTwo.getText());
-            wildcardQuadThree   = Integer.parseInt(WildcardMaskQuadThree.getText());
-            wildcardQuadFour    = Integer.parseInt(WildcardMaskQuadFour.getText());
-
-
             try {
-                IpAddress ipAddress = new IpAddress(ipAddressQuadOne, ipAddressQuadTwo, ipAddressQuadThree, ipAddressQuadFour);
-                SubnetMask subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
-                WildCardMask wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
+                ipAddress = new IpAddress(ipAddressQuadOne, ipAddressQuadTwo, ipAddressQuadThree, ipAddressQuadFour);
             } catch (Exception e) { }
 
         } catch (NumberFormatException e) {
@@ -103,6 +83,40 @@ public class GUI extends javax.swing.JFrame {
         Calculate.setText("Calculate");
         Calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                if ((SubnetMaskQuadOne.getText().equals("") && SubnetMaskQuadTwo.getText().equals("") && SubnetMaskQuadThree.getText().equals("") && SubnetMaskQuadFour.getText().equals(""))
+                        && (!WildcardMaskQuadOne.getText().equals("") && !WildcardMaskQuadTwo.getText().equals("") && !WildcardMaskQuadThree.getText().equals("") && !WildcardMaskQuadFour.getText().equals(""))){
+                    try {
+                        int wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour;
+                        wildcardQuadOne     = Integer.parseInt(WildcardMaskQuadOne.getText());
+                        wildcardQuadTwo     = Integer.parseInt(WildcardMaskQuadTwo.getText());
+                        wildcardQuadThree   = Integer.parseInt(WildcardMaskQuadThree.getText());
+                        wildcardQuadFour    = Integer.parseInt(WildcardMaskQuadFour.getText());
+                        wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
+                        subnetMask = wildCardMask.WildcardMaskToSubnetMask();
+                        SubnetMaskQuadOne.setText(Integer.toString(subnetMask.getQuadOne()));
+                        SubnetMaskQuadTwo.setText(Integer.toString(subnetMask.getQuadTwo()));
+                        SubnetMaskQuadThree.setText(Integer.toString(subnetMask.getQuadThree()));
+                        SubnetMaskQuadFour.setText(Integer.toString(subnetMask.getQuadFour()));
+                    } catch (Exception e) { }
+                }
+                else if ((!SubnetMaskQuadOne.getText().equals("") && !SubnetMaskQuadTwo.getText().equals("") && !SubnetMaskQuadThree.getText().equals("") && !SubnetMaskQuadFour.getText().equals(""))
+                        && (WildcardMaskQuadOne.getText().equals("") && WildcardMaskQuadTwo.getText().equals("") && WildcardMaskQuadThree.getText().equals("") && WildcardMaskQuadFour.getText().equals(""))){
+                    try {
+                        int subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour;
+                        subnetMaskQuadOne   = Integer.parseInt(SubnetMaskQuadOne.getText());
+                        subnetMaskQuadTwo   = Integer.parseInt(SubnetMaskQuadTwo.getText());
+                        subnetMaskQuadThree = Integer.parseInt(SubnetMaskQuadThree.getText());
+                        subnetMaskQuadFour  = Integer.parseInt(SubnetMaskQuadFour.getText());
+                        subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
+                        wildCardMask = subnetMask.SubnetMaskToWildcardMask();
+                        WildcardMaskQuadOne.setText(Integer.toString(wildCardMask.getQuadOne()));
+                        WildcardMaskQuadTwo.setText(Integer.toString(wildCardMask.getQuadTwo()));
+                        WildcardMaskQuadThree.setText(Integer.toString(wildCardMask.getQuadThree()));
+                        WildcardMaskQuadFour.setText(Integer.toString(wildCardMask.getQuadFour()));
+                    } catch (Exception e) { }
+                }
+                NetworkRange();
                 CalculateActionPerformed(evt);
             }
         });
@@ -115,7 +129,7 @@ public class GUI extends javax.swing.JFrame {
 
         BroadcastLabel.setText("Boardcast Address:");
 
-        NetworkRangeOutputLabel.setText("0.0.0.0 - 0.0.0.0");
+        NetworkRangeOutputLabel.setText(NetRange);
 
         NetworkClassOutputLabel.setText("A, B, C");
 
@@ -233,7 +247,33 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    void NetworkRange(){
+        NetRange = IpAddressQuadOne.getText() + "." + IpAddressQuadTwo.getText() + "." + IpAddressQuadThree.getText() + "." + IpAddressQuadFour.getText() + " - " + IpAddressQuadOne.getText();
+        if (Integer.parseInt(SubnetMaskQuadTwo.getText()) == 255)
+            NetRange +=  "." + IpAddressQuadTwo.getText();
+        else{
+            NetRange += "." + (Integer.parseInt(IpAddressQuadTwo.getText()) + 31);
+            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadThree.getText()));
+            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+            NetworkRangeOutputLabel.setText(NetRange);
+            return;
+        }
+        if (Integer.parseInt(SubnetMaskQuadThree.getText()) == 255)
+            NetRange += IpAddressQuadThree.getText();
+        else{
+            NetRange += "." + (Integer.parseInt(IpAddressQuadThree.getText()) + 31);
+            NetRange += "." + (255 - Integer.parseInt(IpAddressQuadFour.getText()));
+            NetworkRangeOutputLabel.setText(NetRange);
+            return;
+        }
+        NetRange += "." + (Integer.parseInt(IpAddressQuadFour.getText()) + 31);
+        NetworkRangeOutputLabel.setText(NetRange);
+    }
 
+    String NetRange = "0.0.0.0 - 0.0.0.0"; //Used to accurately pass the network range between functions
+    IpAddress ipAddress;
+    SubnetMask subnetMask;
+    WildCardMask wildCardMask;
     // Variables declaration - do not modify
     private javax.swing.JLabel BroadcastLabel;
     private javax.swing.JLabel BroadcastOutputLabel;
@@ -265,3 +305,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField WildcardMaskQuadTwo;
     // End of variables declaration
 }
+
+
+
