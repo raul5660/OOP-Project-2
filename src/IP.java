@@ -5,7 +5,7 @@
  * Arguments:
  * Description:
  */
-public abstract class IP {
+abstract class IP {
     private int quadOne,quadTwo,quadThree,quadFour;
 
     /*
@@ -14,14 +14,7 @@ public abstract class IP {
      * Arguments:
      * Description:
      */
-    public IP() { }
-    /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
-     */
-    public IP(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    IP(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         this.setQuadOne(quadOne);
         this.setQuadTwo(quadTwo);
         this.setQuadThree(quadThree);
@@ -33,7 +26,7 @@ public abstract class IP {
      * Arguments:
      * Description:
      */
-    public int getQuadOne() {
+    int getQuadOne() {
         return quadOne;
     }
     /*
@@ -55,7 +48,7 @@ public abstract class IP {
      * Arguments:
      * Description:
      */
-    public int getQuadTwo() {
+    int getQuadTwo() {
         return quadTwo;
     }
     /*
@@ -77,7 +70,7 @@ public abstract class IP {
      * Arguments:
      * Description:
      */
-    public int getQuadThree() {
+    int getQuadThree() {
         return quadThree;
     }
     /*
@@ -99,7 +92,7 @@ public abstract class IP {
      * Arguments:
      * Description:
      */
-    public int getQuadFour() {
+    int getQuadFour() {
         return quadFour;
     }
     /*

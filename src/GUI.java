@@ -4,14 +4,14 @@
  * Arguments:
  * Description:
  */
-public class GUI extends javax.swing.JFrame {
+class GUI extends javax.swing.JFrame {
     /*
      * Name:
      * Type:
      * Arguments:
      * Description:
      */
-    public GUI() {
+    GUI() {
         initComponents();
     }
     /*
@@ -24,16 +24,34 @@ public class GUI extends javax.swing.JFrame {
         int ipAddressQuadOne,
                 ipAddressQuadTwo,
                 ipAddressQuadThree,
-                ipAddressQuadFour;
+                ipAddressQuadFour,
+                wildcardQuadOne,
+                wildcardQuadTwo,
+                wildcardQuadThree,
+                wildcardQuadFour,
+                subnetMaskQuadOne,
+                subnetMaskQuadTwo,
+                subnetMaskQuadThree,
+                subnetMaskQuadFour;
         try {
 
             ipAddressQuadOne    = Integer.parseInt(IpAddressQuadOne.getText());
             ipAddressQuadTwo    = Integer.parseInt(IpAddressQuadTwo.getText());
             ipAddressQuadThree  = Integer.parseInt(IpAddressQuadThree.getText());
             ipAddressQuadFour   = Integer.parseInt(IpAddressQuadFour.getText());
+            subnetMaskQuadOne   = Integer.parseInt(SubnetMaskQuadOne.getText());
+            subnetMaskQuadTwo   = Integer.parseInt(SubnetMaskQuadTwo.getText());
+            subnetMaskQuadThree = Integer.parseInt(SubnetMaskQuadThree.getText());
+            subnetMaskQuadFour  = Integer.parseInt(SubnetMaskQuadFour.getText());
+            wildcardQuadOne     = Integer.parseInt(WildcardMaskQuadOne.getText());
+            wildcardQuadTwo     = Integer.parseInt(WildcardMaskQuadTwo.getText());
+            wildcardQuadThree   = Integer.parseInt(WildcardMaskQuadThree.getText());
+            wildcardQuadFour    = Integer.parseInt(WildcardMaskQuadFour.getText());
             try {
                 ipAddress = new IpAddress(ipAddressQuadOne, ipAddressQuadTwo, ipAddressQuadThree, ipAddressQuadFour);
-            } catch (Exception e) { }
+                subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
+                wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
+            } catch (Exception ignored) { }
 
         } catch (NumberFormatException e) {
             new ErrorGui("Error " + e.getMessage()).setVisible(true);
@@ -132,8 +150,10 @@ public class GUI extends javax.swing.JFrame {
                         WildcardMaskQuadFour.setText(Integer.toString(wildCardMask.getQuadFour()));
                     } catch (Exception e) { }
                 }
+
                 NetworkRange();
                 CalculateActionPerformed(evt);
+                NetworkClassOutputLabel.setText(subnetMask.ClassType());
             }
         });
 

@@ -4,14 +4,14 @@
  * Arguments:
  * Description:
  */
-public class InvalidWildCardException extends Exception {
+class InvalidWildCardException extends Exception {
 	/*
      * Name:
      * Type:
      * Arguments:
      * Description:
      */
-	 public InvalidWildCardException(String message) {
+	 InvalidWildCardException(String message) {
 	 	super(message);
 		new ErrorGui(message).setVisible(true);
 	 }

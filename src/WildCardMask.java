@@ -1,21 +1,13 @@
 import java.util.Arrays;
 
-public class WildCardMask extends IP {
-
+class WildCardMask extends IP {
     /*
      * Name:
      * Type:
      * Arguments:
      * Description:
      */
-    public WildCardMask() { }
-    /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
-     */
-    public WildCardMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    WildCardMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
     /*
@@ -24,7 +16,7 @@ public class WildCardMask extends IP {
      * Arguments:
      * Description:
      */
-    public SubnetMask WildcardMaskToSubnetMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
+    SubnetMask WildcardMaskToSubnetMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new SubnetMask(
                 255+this.getQuadOne(),
                 255+this.getQuadTwo(),

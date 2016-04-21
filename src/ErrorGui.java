@@ -4,14 +4,14 @@
  * Arguments:
  * Description:
  */
-public class ErrorGui extends javax.swing.JFrame {
+class ErrorGui extends javax.swing.JFrame {
     /*
      * Name:
      * Type:
      * Arguments:
      * Description:
      */
-    public ErrorGui(String Error) {
+    ErrorGui(String Error) {
         initComponents();
         jTextArea1.setText(Error);
     }

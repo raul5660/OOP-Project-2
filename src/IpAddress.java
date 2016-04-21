@@ -1,23 +1,13 @@
-public class IpAddress extends IP {
-
+class IpAddress extends IP {
     /*
      * Name:
      * Type:
      * Arguments:
      * Description:
      */
-    public IpAddress() { }
-
-    /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
-     */
-    public IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
     }
-
     /*
      * Name:
      * Type:
@@ -32,5 +22,10 @@ public class IpAddress extends IP {
                 this.getQuadTwo(),
                 this.getQuadThree(),
                 this.getQuadFour());
+    }
+
+    public String NetworkRange(SubnetMask subnetMask){
+
+        return "";
     }
 }
