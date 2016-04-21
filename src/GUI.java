@@ -248,9 +248,13 @@ public class GUI extends javax.swing.JFrame {
 
     	for (int i = 0; i < 9; i++){
     		WildcardMaskQuadOne.setText("" + (255 - Integer.parseInt(SubnetMaskQuadOne.getText())));
+    		wildCardMask.setQuadOne(255 - Integer.parseInt(SubnetMaskQuadOne.getText()));
     		WildcardMaskQuadTwo.setText("" + (255 - Integer.parseInt(SubnetMaskQuadTwo.getText())));
+    		wildCardMask.setQuadTwo(255 - Integer.parseInt(SubnetMaskQuadTwo.getText()));
     		WildcardMaskQuadThree.setText("" + (255 - Integer.parseInt(SubnetMaskQuadThree.getText())));
+    		wildCardMask.setQuadThree(255 - Integer.parseInt(SubnetMaskQuadThree.getText()));
     		WildcardMaskQuadFour.setText("" + (255 - Integer.parseInt(SubnetMaskQuadFour.getText())));
+    		wildCardMask.setQuadFour(255 - Integer.parseInt(SubnetMaskQuadFour.getText()));
     	}
     }
     
@@ -258,9 +262,13 @@ public class GUI extends javax.swing.JFrame {
     	
     	for (int i = 0; i < 9; i++){
     		SubnetMaskQuadOne.setText("" + (255 - Integer.parseInt(WildcardMaskQuadOne.getText())));
+    		subnetMask.setQuadOne(255 - Integer.parseInt(WildcardMaskQuadOne.getText()));
     		SubnetMaskQuadTwo.setText("" + (255 - Integer.parseInt(WildcardMaskQuadTwo.getText())));
+    		subnetMask.setQuadTwo(255 - Integer.parseInt(WildcardMaskQuadTwo.getText()));
     		SubnetMaskQuadThree.setText("" + (255 - Integer.parseInt(WildcardMaskQuadThree.getText())));
+    		subnetMask.setQuadThree(255 - Integer.parseInt(WildcardMaskQuadThree.getText()));
     		SubnetMaskQuadFour.setText("" + (255 - Integer.parseInt(WildcardMaskQuadFour.getText())));
+    		subnetMask.setQuadFour(255 - Integer.parseInt(WildcardMaskQuadFour.getText()));
     	}
     }
     
