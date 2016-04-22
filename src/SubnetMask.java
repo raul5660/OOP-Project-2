@@ -1,4 +1,3 @@
-import java.util.Arrays;
 /*
  * Name:
  * Type:
@@ -33,7 +32,7 @@ class SubnetMask extends IP {
             if ((netmaskNumeric & ourMaskBitPattern) != 0) {
                 encounteredOne = true; // the bit is 1
             } else { // the bit is 0
-                if (encounteredOne == true)
+                if (encounteredOne)
                     throw new InvalidSubnetException("Invalid netmask: " + this.toString() + " (bit " + (i + 1) + ")");
             }
             ourMaskBitPattern = ourMaskBitPattern << 1;
@@ -105,7 +104,7 @@ class SubnetMask extends IP {
      * Arguments:
      * Description:
      */
-    public WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
+    WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new WildCardMask(
                 Integer.parseInt(invertBits(toBits(this.getQuadOne())),2),
                 Integer.parseInt(invertBits(toBits(this.getQuadTwo())),2),
@@ -133,7 +132,7 @@ class SubnetMask extends IP {
      * Arguments:
      * Description:
      */
-    public int getNetmaskNumeric() {
+    int getNetmaskNumeric() {
         return this.netmaskNumeric;
     }
     /*
@@ -142,7 +141,7 @@ class SubnetMask extends IP {
      * Arguments:
      * Description:
      */
-    public String ClassType() {
+    String ClassType() {
         if (this.getQuadOne() == 255 && this.getQuadTwo() == 255 && this.getQuadThree() == 255)
         {
             return "C";

@@ -18,10 +18,10 @@ class WildCardMask extends IP {
      */
     SubnetMask WildcardMaskToSubnetMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new SubnetMask(
-                255+this.getQuadOne(),
-                255+this.getQuadTwo(),
-                255+this.getQuadThree(),
-                255+this.getQuadFour());
+                Integer.parseInt(invertBits(toBits(this.getQuadOne())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadTwo())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadThree())),2),
+                Integer.parseInt(invertBits(toBits(this.getQuadFour())),2));
     }
     /*
      * Name:

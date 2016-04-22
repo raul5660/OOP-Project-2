@@ -21,6 +21,7 @@ class GUI extends javax.swing.JFrame {
         SubnetMaskQuadTwo.setText("255");
         SubnetMaskQuadThree.setText("255");
         SubnetMaskQuadFour.setText("0");
+        NetRange = "0.0.0.0 - 0.0.0.0";
     }
     /*
      * Name:
@@ -28,7 +29,7 @@ class GUI extends javax.swing.JFrame {
      * Arguments:
      * Description:
      */
-    private void CalculateActionPerformed(java.awt.event.ActionEvent evt){
+    private void CalculateActionPerformed(){
         int ipAddressQuadOne,
                 ipAddressQuadTwo,
                 ipAddressQuadThree,
@@ -123,53 +124,51 @@ class GUI extends javax.swing.JFrame {
         QuadFourLabel.setText("Quad Four");
 
         Calculate.setText("Calculate");
-        Calculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Calculate.addActionListener(evt -> {
 
-                if ((SubnetMaskQuadOne.getText().equals("") && SubnetMaskQuadTwo.getText().equals("") && SubnetMaskQuadThree.getText().equals("") && SubnetMaskQuadFour.getText().equals(""))
-                        && (!WildcardMaskQuadOne.getText().equals("") && !WildcardMaskQuadTwo.getText().equals("") && !WildcardMaskQuadThree.getText().equals("") && !WildcardMaskQuadFour.getText().equals(""))){
-                    try {
-                        int wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour;
-                        wildcardQuadOne     = Integer.parseInt(WildcardMaskQuadOne.getText());
-                        wildcardQuadTwo     = Integer.parseInt(WildcardMaskQuadTwo.getText());
-                        wildcardQuadThree   = Integer.parseInt(WildcardMaskQuadThree.getText());
-                        wildcardQuadFour    = Integer.parseInt(WildcardMaskQuadFour.getText());
-                        wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
-                        subnetMask = wildCardMask.WildcardMaskToSubnetMask();
-                        SubnetMaskQuadOne.setText(Integer.toString(subnetMask.getQuadOne()));
-                        SubnetMaskQuadTwo.setText(Integer.toString(subnetMask.getQuadTwo()));
-                        SubnetMaskQuadThree.setText(Integer.toString(subnetMask.getQuadThree()));
-                        SubnetMaskQuadFour.setText(Integer.toString(subnetMask.getQuadFour()));
-                    } catch (Exception e) { }
-                }
-                else if ((!SubnetMaskQuadOne.getText().equals("") && !SubnetMaskQuadTwo.getText().equals("") && !SubnetMaskQuadThree.getText().equals("") && !SubnetMaskQuadFour.getText().equals(""))
-                        && (WildcardMaskQuadOne.getText().equals("") && WildcardMaskQuadTwo.getText().equals("") && WildcardMaskQuadThree.getText().equals("") && WildcardMaskQuadFour.getText().equals(""))){
-                    try {
-                        int subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour;
-                        subnetMaskQuadOne   = Integer.parseInt(SubnetMaskQuadOne.getText());
-                        subnetMaskQuadTwo   = Integer.parseInt(SubnetMaskQuadTwo.getText());
-                        subnetMaskQuadThree = Integer.parseInt(SubnetMaskQuadThree.getText());
-                        subnetMaskQuadFour  = Integer.parseInt(SubnetMaskQuadFour.getText());
-                        subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
-                        wildCardMask = subnetMask.SubnetMaskToWildcardMask();
-                        WildcardMaskQuadOne.setText(Integer.toString(wildCardMask.getQuadOne()));
-                        WildcardMaskQuadTwo.setText(Integer.toString(wildCardMask.getQuadTwo()));
-                        WildcardMaskQuadThree.setText(Integer.toString(wildCardMask.getQuadThree()));
-                        WildcardMaskQuadFour.setText(Integer.toString(wildCardMask.getQuadFour()));
-                    } catch (Exception e) { }
-                }
-
-
-                CalculateActionPerformed(evt);
-                NetworkClassOutputLabel.setText(subnetMask.ClassType());
+            if ((SubnetMaskQuadOne.getText().equals("") && SubnetMaskQuadTwo.getText().equals("") && SubnetMaskQuadThree.getText().equals("") && SubnetMaskQuadFour.getText().equals(""))
+                    && (!WildcardMaskQuadOne.getText().equals("") && !WildcardMaskQuadTwo.getText().equals("") && !WildcardMaskQuadThree.getText().equals("") && !WildcardMaskQuadFour.getText().equals(""))){
                 try {
-                    NetworkRangeOutputLabel.setText(ipAddress.NetworkRange(subnetMask));
-                    SubnetIDOutputLabel.setText(ipAddress.NetworkID(subnetMask));
-                    BroadcastOutputLabel.setText(ipAddress.BroadcastAddress(subnetMask));
-                } catch (Exception ignored)
-                {
+                    int wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour;
+                    wildcardQuadOne     = Integer.parseInt(WildcardMaskQuadOne.getText());
+                    wildcardQuadTwo     = Integer.parseInt(WildcardMaskQuadTwo.getText());
+                    wildcardQuadThree   = Integer.parseInt(WildcardMaskQuadThree.getText());
+                    wildcardQuadFour    = Integer.parseInt(WildcardMaskQuadFour.getText());
+                    wildCardMask = new WildCardMask(wildcardQuadOne, wildcardQuadTwo, wildcardQuadThree, wildcardQuadFour);
+                    subnetMask = wildCardMask.WildcardMaskToSubnetMask();
+                    SubnetMaskQuadOne.setText(Integer.toString(subnetMask.getQuadOne()));
+                    SubnetMaskQuadTwo.setText(Integer.toString(subnetMask.getQuadTwo()));
+                    SubnetMaskQuadThree.setText(Integer.toString(subnetMask.getQuadThree()));
+                    SubnetMaskQuadFour.setText(Integer.toString(subnetMask.getQuadFour()));
+                } catch (Exception ignored) { }
+            }
+            else if ((!SubnetMaskQuadOne.getText().equals("") && !SubnetMaskQuadTwo.getText().equals("") && !SubnetMaskQuadThree.getText().equals("") && !SubnetMaskQuadFour.getText().equals(""))
+                    && (WildcardMaskQuadOne.getText().equals("") && WildcardMaskQuadTwo.getText().equals("") && WildcardMaskQuadThree.getText().equals("") && WildcardMaskQuadFour.getText().equals(""))){
+                try {
+                    int subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour;
+                    subnetMaskQuadOne   = Integer.parseInt(SubnetMaskQuadOne.getText());
+                    subnetMaskQuadTwo   = Integer.parseInt(SubnetMaskQuadTwo.getText());
+                    subnetMaskQuadThree = Integer.parseInt(SubnetMaskQuadThree.getText());
+                    subnetMaskQuadFour  = Integer.parseInt(SubnetMaskQuadFour.getText());
+                    subnetMask = new SubnetMask(subnetMaskQuadOne, subnetMaskQuadTwo, subnetMaskQuadThree, subnetMaskQuadFour);
+                    wildCardMask = subnetMask.SubnetMaskToWildcardMask();
+                    WildcardMaskQuadOne.setText(Integer.toString(wildCardMask.getQuadOne()));
+                    WildcardMaskQuadTwo.setText(Integer.toString(wildCardMask.getQuadTwo()));
+                    WildcardMaskQuadThree.setText(Integer.toString(wildCardMask.getQuadThree()));
+                    WildcardMaskQuadFour.setText(Integer.toString(wildCardMask.getQuadFour()));
+                } catch (Exception ignored) { }
+            }
 
-                }
+
+            CalculateActionPerformed();
+            NetworkClassOutputLabel.setText(subnetMask.ClassType());
+            try {
+                NetworkRangeOutputLabel.setText(ipAddress.NetworkRange(subnetMask));
+                SubnetIDOutputLabel.setText(ipAddress.NetworkID(subnetMask));
+                BroadcastOutputLabel.setText(ipAddress.BroadcastAddress(subnetMask));
+            } catch (Exception ignored)
+            {
+
             }
         });
 
@@ -299,10 +298,10 @@ class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    String NetRange = "0.0.0.0 - 0.0.0.0"; //Used to accurately pass the network range between functions
-    IpAddress ipAddress;
-    SubnetMask subnetMask;
-    WildCardMask wildCardMask;
+    private String NetRange; //Used to accurately pass the network range between functions
+    private IpAddress ipAddress;
+    private SubnetMask subnetMask;
+    private WildCardMask wildCardMask;
     // Variables declaration - do not modify
     private javax.swing.JLabel BroadcastLabel;
     private javax.swing.JLabel BroadcastOutputLabel;

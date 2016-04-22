@@ -6,6 +6,7 @@
  * Description:
  */
 abstract class IP {
+    // Attributes
     private int quadOne,quadTwo,quadThree,quadFour;
 
     /*
@@ -129,7 +130,7 @@ abstract class IP {
      * Arguments:
      * Description:
      */
-    public static String invertBits(String bits) {
+    static String invertBits(String bits) {
         StringBuilder stringBuilder = new StringBuilder();
         for (char bit : bits.toCharArray()){
             switch (bit){
@@ -149,7 +150,7 @@ abstract class IP {
      * Arguments:
      * Description:
      */
-    public static String toBits(int x)
+    static String toBits(int x)
     {
         return pad(Integer.toBinaryString(x));
     }
