@@ -6,10 +6,7 @@ import java.util.Arrays;
  * Description:
  */
 class SubnetMask extends IP {
-    public int getNetmaskNumeric() {
-        return netmaskNumeric;
-    }
-
+    // Attributes
     private int netmaskNumeric;
     /*
      * Name:
@@ -19,38 +16,26 @@ class SubnetMask extends IP {
      */
     SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
-        String[] st = this.toString().split("\\.");
-        if (st.length != 4)
-            throw new InvalidSubnetException("Invalid netmask address: "
-                    + this.toString());
 
+        Integer[] netMask = {this.getQuadOne(), this.getQuadTwo(), this.getQuadThree(), this.getQuadFour()};
         int i = 24;
         netmaskNumeric = 0;
-        if (Integer.parseInt(st[0]) < 255) {
-            throw new InvalidSubnetException(
-                    "The first byte of netmask can not be less than 255");
-        }
-        for (int n = 0; n < st.length; n++) {
-            int value = Integer.parseInt(st[n]);
-            if (value != (value & 0xff)) {
-                throw new InvalidSubnetException("Invalid netmask address: "
-                        + this.toString());
-            }
 
-            netmaskNumeric += value << i;
+        for(Integer quad : netMask) {
+            netmaskNumeric += quad << i;
             i -= 8;
         }
+
         boolean encounteredOne = false;
         int ourMaskBitPattern = 1;
+
         for (i = 0; i < 32; i++) {
             if ((netmaskNumeric & ourMaskBitPattern) != 0) {
                 encounteredOne = true; // the bit is 1
             } else { // the bit is 0
                 if (encounteredOne == true)
-                    throw new NumberFormatException("Invalid netmask: "
-                            + this.toString() + " (bit " + (i + 1) + ")");
+                    throw new InvalidSubnetException("Invalid netmask: " + this.toString() + " (bit " + (i + 1) + ")");
             }
-
             ourMaskBitPattern = ourMaskBitPattern << 1;
         }
     }
@@ -62,7 +47,15 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
-            super.setQuadOne(quadOne);
+        if (quadOne < 255) {
+            throw new InvalidSubnetException("The first byte of netmask can not be less than 255");
+        }else {
+            if (quadOne != (quadOne & 0xff)) {
+                throw new InvalidSubnetException("Invalid netmask address");
+            } else {
+                super.setQuadOne(quadOne);
+            }
+        }
     }
     /*
      * Name:
@@ -72,7 +65,11 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
-                super.setQuadTwo(quadTwo);
+        if (quadTwo != (quadTwo & 0xff)) {
+            throw new InvalidSubnetException("Invalid netmask address");
+        } else {
+            super.setQuadTwo(quadTwo);
+        }
     }
     /*
      * Name:
@@ -82,7 +79,11 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
-                super.setQuadThree(quadThree);
+        if (quadThree != (quadThree & 0xff)) {
+            throw new InvalidSubnetException("Invalid netmask address");
+        } else {
+            super.setQuadThree(quadThree);
+        }
     }
     /*
      * Name:
@@ -92,7 +93,11 @@ class SubnetMask extends IP {
      */
     @Override
     public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
-                super.setQuadFour(quadFour);
+        if (quadFour != (quadFour & 0xff)) {
+            throw new InvalidSubnetException("Invalid netmask address");
+        } else {
+            super.setQuadFour(quadFour);
+        }
     }
     /*
      * Name:
@@ -128,8 +133,8 @@ class SubnetMask extends IP {
      * Arguments:
      * Description:
      */
-    private static boolean contains(final int[] arr, final int key) {
-        return Arrays.stream(arr).anyMatch(i -> i == key);
+    public int getNetmaskNumeric() {
+        return this.netmaskNumeric;
     }
     /*
      * Name:

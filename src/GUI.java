@@ -13,6 +13,14 @@ class GUI extends javax.swing.JFrame {
      */
     GUI() {
         initComponents();
+        IpAddressQuadOne.setText("192");
+        IpAddressQuadTwo.setText("168");
+        IpAddressQuadThree.setText("1");
+        IpAddressQuadFour.setText("0");
+        SubnetMaskQuadOne.setText("255");
+        SubnetMaskQuadTwo.setText("255");
+        SubnetMaskQuadThree.setText("255");
+        SubnetMaskQuadFour.setText("0");
     }
     /*
      * Name:
