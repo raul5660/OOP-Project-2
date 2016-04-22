@@ -1,17 +1,35 @@
-/**
- * Created by raulmartinez on 4/4/16.
+/*
+ * Name:ErrorGui
+ * Type:Class
+ * Arguments:ErrorGui(), OkButtonActionPerformed, InitCompontents, 
+ * Description:Displays error message in another frame
  */
-public class ErrorGui extends javax.swing.JFrame {
-
-    public ErrorGui(String Error) {
+class ErrorGui extends javax.swing.JFrame {
+    /*
+     * Name:ErrorGui
+     * Type:constructor
+     * Arguments:Error: String
+     * Description:calls initComponents member function and sets jTextaArea to error
+     */
+    ErrorGui(String Error) {
         initComponents();
         jTextArea1.setText(Error);
     }
-
+    /*
+     * Name:OkActionButtonPerformed
+     * Type:member function
+     * Arguments:evt: ActionEvent
+     * Description:turns off frame visibility
+     */
     private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
     }
-
+    /*
+     * Name:initComponents
+     * Type:member function
+     * Arguments:
+     * Description:sets frame components and formats the frame, then packs it all
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
@@ -63,3 +81,4 @@ public class ErrorGui extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration
 }
+
