@@ -1,17 +1,17 @@
 /*
- * Name:
- * Type:
+ * Name:SubnetMask
+ * Type:class
  * Arguments:
- * Description:
+ * Description:stores and processes data in subnet mask quads
  */
 class SubnetMask extends IP {
     // Attributes
     private int netmaskNumeric;
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:SubnetMask
+     * Type:constructor
+     * Arguments:quadOne: int, quadTwo: int, quadThree: int, quadFour: int
+     * Description:passes variables to super class
      */
     SubnetMask(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
@@ -39,10 +39,10 @@ class SubnetMask extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:setQuadOne
+     * Type:member function
+     * Arguments:quadOne: int
+     * Description:checks to see if variable is within range, then sets it to quadOne
      */
     @Override
     public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
@@ -57,10 +57,10 @@ class SubnetMask extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:setQuadTwo
+     * Type:member function
+     * Arguments:quadTwo: int
+     * Description:checks to see if variable is in range, then sets it to quadTwo
      */
     @Override
     public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
@@ -71,10 +71,10 @@ class SubnetMask extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:setQuadThree
+     * Type:member function
+     * Arguments:quadThree: int
+     * Description:checks to see if variable is in range, then sets it to quadThree
      */
     @Override
     public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
@@ -85,10 +85,10 @@ class SubnetMask extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:setQuadFour
+     * Type:member function
+     * Arguments:quadFour: int
+     * Description:chacks to see if variable is in range, then sets it to quadFour
      */
     @Override
     public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
@@ -99,10 +99,10 @@ class SubnetMask extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
+     * Name:SubnetMaskToWildcardMask
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:converts the mask to wildcard mask
      */
     WildCardMask SubnetMaskToWildcardMask() throws IpException, InvalidSubnetException, InvalidWildCardException {
         return new WildCardMask(
@@ -112,10 +112,10 @@ class SubnetMask extends IP {
                 Integer.parseInt(invertBits(toBits(this.getQuadFour())),2));
     }
     /*
-     * Name:
-     * Type:
+     * Name:toString
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:formats quads into one string
      */
     @Override
     public String toString() {
@@ -127,19 +127,19 @@ class SubnetMask extends IP {
                 this.getQuadFour());
     }
     /*
-     * Name:
-     * Type:
+     * Name:getNetmasKNumeric
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:returns the numeric net mask
      */
     int getNetmaskNumeric() {
         return this.netmaskNumeric;
     }
     /*
-     * Name:
-     * Type:
+     * Name:ClassType
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:returns the class of the subnet mask
      */
     String ClassType() {
         if (this.getQuadOne() == 255 && this.getQuadTwo() == 255 && this.getQuadThree() == 255)

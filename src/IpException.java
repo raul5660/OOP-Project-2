@@ -1,15 +1,15 @@
 /*
- * Name:
- * Type:
+ * Name:IpException
+ * Type:class
  * Arguments:
- * Description:
+ * Description:displays error message when an IpAddress is created with/given improper values
  */
 class IpException extends Exception {
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:IpException
+     * Type:constructor
+     * Arguments:message: String
+     * Description:passes message to super class, then creates an errorGui with message
      */
     IpException(String message) {
         super(message);

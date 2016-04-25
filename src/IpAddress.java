@@ -1,11 +1,17 @@
+/*
+ * Name: IpAddress
+ * Type:class
+ * Arguments:
+ * Description:object to hold and process the IP address quads
+ */
 class IpAddress extends IP {
     // Attributes
     private int baseIPnumeric;
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:IpAddress
+     * Type:constructor
+     * Arguments:quadOne: int, quadTwo: int, quadThree: int, quadFour: int
+     * Description:passes variablles to constructor, then sets basIPnumeric
      */
     IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
@@ -20,10 +26,10 @@ class IpAddress extends IP {
         }
     }
     /*
-     * Name:
-     * Type:
+     * Name:toString
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:formats quads into a single string
      */
     @Override
     public String toString() {
@@ -35,28 +41,28 @@ class IpAddress extends IP {
                 this.getQuadFour());
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:NetworkID
+     * Type:member function
+     * Arguments:subnetMask: SubnetMask
+     * Description:returns symbolic form of passed numbers
      */
     String NetworkID(SubnetMask subnetMask){
         return convertNumericIpToSymbolic(this.baseIPnumeric & subnetMask.getNetmaskNumeric());
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:BroadcastAddress
+     * Type:member function
+     * Arguments:subnetMask: SubnetMask
+     * Description:returns the broadcast address 
      */
     String BroadcastAddress(SubnetMask subnetMask) {
         return convertNumericIpToSymbolic((this.baseIPnumeric & subnetMask.getNetmaskNumeric()) + this.NumberOfIPs(subnetMask));
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:NetworkRange
+     * Type:member function
+     * Arguments:subnetMask: SubnetMask
+     * Description:returns the range of IP addresses  for passed subnetMask
      */
     String NetworkRange(SubnetMask subnetMask) throws IpException, InvalidSubnetException {
         Integer baseIP = this.baseIPnumeric & subnetMask.getNetmaskNumeric();
@@ -66,10 +72,10 @@ class IpAddress extends IP {
         return firstIP + " - " + lastIP;
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:NumberOfIPs
+     * Type:member function
+     * Arguments:subnetMask: SubnetMask
+     * Description:returns the number of IPs left between the IpAddress and subnetMask
      */
     private int NumberOfIPs(SubnetMask subnetMask) {
         int numberOfBits;
@@ -86,10 +92,10 @@ class IpAddress extends IP {
         return numberOfIPs;
     }
     /*
-     * Name:
-     * Type:
-     * Arguments:
-     * Description:
+     * Name:convertNumericToSymbolic
+     * Type:member function
+     * Arguments:ip: Integer
+     * Description:returns a string version of passed number
      */
     private String convertNumericIpToSymbolic(Integer ip) {
         StringBuilder stringBuilder = new StringBuilder(15);
@@ -104,3 +110,4 @@ class IpAddress extends IP {
 
 
 }
+

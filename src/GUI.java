@@ -1,15 +1,15 @@
 /*
- * Name:
- * Type:
- * Arguments:
- * Description:
+ * Name:GUI
+ * Type:class
+ * Arguments:GUI, CalculateActionPerformed, initComponents, 
+ * Description:creates and formats a JFrame to display the IP information
  */
 class GUI extends javax.swing.JFrame {
     /*
-     * Name:
-     * Type:
+     * Name:GUI
+     * Type:constructor
      * Arguments:
-     * Description:
+     * Description:Sets all of the jframe components to an initial value
      */
     GUI() {
         initComponents();
@@ -24,10 +24,10 @@ class GUI extends javax.swing.JFrame {
         NetRange = "0.0.0.0 - 0.0.0.0";
     }
     /*
-     * Name:
-     * Type:
+     * Name:CalculateActionPerformed
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:sets IP/WildcardMask/SubnetMask objects to the contents of the quads
      */
     private void CalculateActionPerformed(){
         int ipAddressQuadOne,
@@ -67,10 +67,10 @@ class GUI extends javax.swing.JFrame {
         }
     }
     /*
-     * Name:
-     * Type:
+     * Name:initComponents
+     * Type:member function
      * Arguments:
-     * Description:
+     * Description:initializes frame components and formats GUI
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -333,6 +333,7 @@ class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField WildcardMaskQuadTwo;
     // End of variables declaration
 }
+
 
 
 
