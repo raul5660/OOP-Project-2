@@ -4,7 +4,7 @@
  * Arguments:
  * Description:Creates GUI object
  */
-public class Main {
+class Main {
     /*
      * Name:main
      * Type:main function

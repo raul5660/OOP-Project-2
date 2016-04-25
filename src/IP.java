@@ -35,7 +35,7 @@ abstract class IP {
      * Arguments:quadOne: int
      * Description:checks if passed variable is within proper range then sets it to quad one
      */
-    public void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    void setQuadOne(int quadOne) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadOne > 255 || quadOne < 0){
             throw new IpException("Quad one exceeds limit");
         } else {
@@ -57,7 +57,7 @@ abstract class IP {
      * Arguments:quadTwo: int
      * Description:checks to see if passed variable is within range, then sets it to quadTwo
      */
-    public void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    void setQuadTwo(int quadTwo) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadTwo > 255 || quadTwo < 0){
             throw new IpException("Quad two exceeds limit");
         } else {
@@ -79,7 +79,7 @@ abstract class IP {
      * Arguments:quadThree: int
      * Description:checks to see if passed variable on in range, then sets it to quadThree
      */
-    public void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    void setQuadThree(int quadThree) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadThree > 255 || quadThree < 0){
             throw new IpException("Quad three exceeds limit");
         } else {
@@ -101,7 +101,7 @@ abstract class IP {
      * Arguments:
      * Description:checks to see if passed variable is in range, then sets it to quadFour
      */
-    public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
+    void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         if (quadFour > 255 || quadFour < 0){
             throw new IpException("Quad four exceeds limit");
         } else {
@@ -156,7 +156,7 @@ abstract class IP {
     /*
      * Name:pad
      * Type:member function
-     * Arguments:nnum: String
+     * Arguments:num: String
      * Description:pads a short binary string with zeroes
      */
     private static String pad(String num) {

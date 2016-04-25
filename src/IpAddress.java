@@ -11,7 +11,7 @@ class IpAddress extends IP {
      * Name:IpAddress
      * Type:constructor
      * Arguments:quadOne: int, quadTwo: int, quadThree: int, quadFour: int
-     * Description:passes variablles to constructor, then sets basIPnumeric
+     * Description:passes variables to constructor, then sets basIPnumeric
      */
     IpAddress(int quadOne, int quadTwo, int quadThree, int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {
         super(quadOne, quadTwo, quadThree, quadFour);
@@ -64,7 +64,7 @@ class IpAddress extends IP {
      * Arguments:subnetMask: SubnetMask
      * Description:returns the range of IP addresses  for passed subnetMask
      */
-    String NetworkRange(SubnetMask subnetMask) throws IpException, InvalidSubnetException {
+    String NetworkRange(SubnetMask subnetMask) {
         Integer baseIP = this.baseIPnumeric & subnetMask.getNetmaskNumeric();
         String firstIP = convertNumericIpToSymbolic(baseIP + 1);
         String lastIP = convertNumericIpToSymbolic(baseIP + this.NumberOfIPs(subnetMask) - 1);

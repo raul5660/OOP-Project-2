@@ -76,9 +76,9 @@ class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        IpLabel = new javax.swing.JLabel();
-        SubnetLabel = new javax.swing.JLabel();
-        WildcardLabel = new javax.swing.JLabel();
+        javax.swing.JLabel ipLabel = new javax.swing.JLabel();
+        javax.swing.JLabel subnetLabel = new javax.swing.JLabel();
+        javax.swing.JLabel wildcardLabel = new javax.swing.JLabel();
         WildcardMaskQuadOne = new javax.swing.JTextField();
         WildcardMaskQuadTwo = new javax.swing.JTextField();
         WildcardMaskQuadThree = new javax.swing.JTextField();
@@ -91,15 +91,15 @@ class GUI extends javax.swing.JFrame {
         IpAddressQuadThree = new javax.swing.JTextField();
         IpAddressQuadTwo = new javax.swing.JTextField();
         IpAddressQuadOne = new javax.swing.JTextField();
-        QuadOneLabel = new javax.swing.JLabel();
-        QuadTwoLabel = new javax.swing.JLabel();
-        QuadThreeLabel = new javax.swing.JLabel();
-        QuadFourLabel = new javax.swing.JLabel();
-        Calculate = new javax.swing.JButton();
-        NetworkRangeLabel = new javax.swing.JLabel();
-        NetworkClassLabel = new javax.swing.JLabel();
-        SubnetIDLabel = new javax.swing.JLabel();
-        BroadcastLabel = new javax.swing.JLabel();
+        javax.swing.JLabel quadOneLabel = new javax.swing.JLabel();
+        javax.swing.JLabel quadTwoLabel = new javax.swing.JLabel();
+        javax.swing.JLabel quadThreeLabel = new javax.swing.JLabel();
+        javax.swing.JLabel quadFourLabel = new javax.swing.JLabel();
+        javax.swing.JButton calculate = new javax.swing.JButton();
+        javax.swing.JLabel networkRangeLabel = new javax.swing.JLabel();
+        javax.swing.JLabel networkClassLabel = new javax.swing.JLabel();
+        javax.swing.JLabel subnetIDLabel = new javax.swing.JLabel();
+        javax.swing.JLabel broadcastLabel = new javax.swing.JLabel();
         NetworkRangeOutputLabel = new javax.swing.JLabel();
         NetworkClassOutputLabel = new javax.swing.JLabel();
         SubnetIDOutputLabel = new javax.swing.JLabel();
@@ -107,24 +107,24 @@ class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        IpLabel.setText("Ip Address: ");
+        ipLabel.setText("Ip Address: ");
 
-        SubnetLabel.setText("Subnet Mask: ");
+        subnetLabel.setText("Subnet Mask: ");
 
-        WildcardLabel.setText("Wildcard Mask: ");
+        wildcardLabel.setText("Wildcard Mask: ");
 
         IpAddressQuadOne.setMinimumSize(new java.awt.Dimension(80, 28));
 
-        QuadOneLabel.setText("Quad One");
+        quadOneLabel.setText("Quad One");
 
-        QuadTwoLabel.setText("Quad Two");
+        quadTwoLabel.setText("Quad Two");
 
-        QuadThreeLabel.setText("Quad Three");
+        quadThreeLabel.setText("Quad Three");
 
-        QuadFourLabel.setText("Quad Four");
+        quadFourLabel.setText("Quad Four");
 
-        Calculate.setText("Calculate");
-        Calculate.addActionListener(evt -> {
+        calculate.setText("Calculate");
+        calculate.addActionListener(evt -> {
 
             if ((SubnetMaskQuadOne.getText().equals("") && SubnetMaskQuadTwo.getText().equals("") && SubnetMaskQuadThree.getText().equals("") && SubnetMaskQuadFour.getText().equals(""))
                     && (!WildcardMaskQuadOne.getText().equals("") && !WildcardMaskQuadTwo.getText().equals("") && !WildcardMaskQuadThree.getText().equals("") && !WildcardMaskQuadFour.getText().equals(""))){
@@ -172,13 +172,13 @@ class GUI extends javax.swing.JFrame {
             }
         });
 
-        NetworkRangeLabel.setText("Network Range:");
+        networkRangeLabel.setText("Network Range:");
 
-        NetworkClassLabel.setText("Network Class:");
+        networkClassLabel.setText("Network Class:");
 
-        SubnetIDLabel.setText("Network ID:");
+        subnetIDLabel.setText("Network ID:");
 
-        BroadcastLabel.setText("Boardcast Address:");
+        broadcastLabel.setText("Broadcast Address:");
 
         NetworkRangeOutputLabel.setText(NetRange);
 
@@ -195,44 +195,44 @@ class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Calculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(calculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(SubnetLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(IpLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(WildcardLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                                        .addComponent(subnetLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(ipLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(wildcardLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                                                        .addComponent(QuadOneLabel)
+                                                                        .addComponent(quadOneLabel)
                                                                         .addComponent(SubnetMaskQuadOne, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(WildcardMaskQuadOne, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(IpAddressQuadOne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(16, 16, 16)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                                                        .addComponent(QuadTwoLabel)
+                                                                        .addComponent(quadTwoLabel)
                                                                         .addComponent(IpAddressQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(SubnetMaskQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(WildcardMaskQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                                                         .addComponent(IpAddressQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(QuadThreeLabel)
+                                                                        .addComponent(quadThreeLabel)
                                                                         .addComponent(SubnetMaskQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(WildcardMaskQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(16, 16, 16)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                                                        .addComponent(QuadFourLabel)
+                                                                        .addComponent(quadFourLabel)
                                                                         .addComponent(IpAddressQuadFour, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(SubnetMaskQuadFour, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(WildcardMaskQuadFour, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(BroadcastLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(NetworkRangeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(NetworkClassLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(SubnetIDLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                                        .addComponent(broadcastLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(networkRangeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(networkClassLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(subnetIDLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addComponent(NetworkRangeOutputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,20 +247,20 @@ class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(QuadOneLabel)
-                                        .addComponent(QuadTwoLabel)
-                                        .addComponent(QuadThreeLabel)
-                                        .addComponent(QuadFourLabel))
+                                        .addComponent(quadOneLabel)
+                                        .addComponent(quadTwoLabel)
+                                        .addComponent(quadThreeLabel)
+                                        .addComponent(quadFourLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(IpLabel)
+                                        .addComponent(ipLabel)
                                         .addComponent(IpAddressQuadOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(IpAddressQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(IpAddressQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(IpAddressQuadFour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(SubnetLabel)
+                                        .addComponent(subnetLabel)
                                         .addComponent(SubnetMaskQuadOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(SubnetMaskQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(SubnetMaskQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,19 +271,19 @@ class GUI extends javax.swing.JFrame {
                                         .addComponent(WildcardMaskQuadTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(WildcardMaskQuadThree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(WildcardMaskQuadFour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(WildcardLabel))
+                                        .addComponent(wildcardLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Calculate)
+                                .addComponent(calculate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(NetworkRangeLabel)
+                                                .addComponent(networkRangeLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(NetworkClassLabel)
+                                                .addComponent(networkClassLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(SubnetIDLabel)
+                                                .addComponent(subnetIDLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(BroadcastLabel))
+                                                .addComponent(broadcastLabel))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(NetworkRangeOutputLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,35 +298,22 @@ class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private String NetRange; //Used to accurately pass the network range between functions
+    private final String NetRange; //Used to accurately pass the network range between functions
     private IpAddress ipAddress;
     private SubnetMask subnetMask;
     private WildCardMask wildCardMask;
-    // Variables declaration - do not modify
-    private javax.swing.JLabel BroadcastLabel;
     private javax.swing.JLabel BroadcastOutputLabel;
-    private javax.swing.JButton Calculate;
     private javax.swing.JTextField IpAddressQuadFour;
     private javax.swing.JTextField IpAddressQuadOne;
     private javax.swing.JTextField IpAddressQuadThree;
     private javax.swing.JTextField IpAddressQuadTwo;
-    private javax.swing.JLabel IpLabel;
-    private javax.swing.JLabel NetworkClassLabel;
     private javax.swing.JLabel NetworkClassOutputLabel;
-    private javax.swing.JLabel NetworkRangeLabel;
     private javax.swing.JLabel NetworkRangeOutputLabel;
-    private javax.swing.JLabel QuadFourLabel;
-    private javax.swing.JLabel QuadOneLabel;
-    private javax.swing.JLabel QuadThreeLabel;
-    private javax.swing.JLabel QuadTwoLabel;
-    private javax.swing.JLabel SubnetIDLabel;
     private javax.swing.JLabel SubnetIDOutputLabel;
-    private javax.swing.JLabel SubnetLabel;
     private javax.swing.JTextField SubnetMaskQuadTwo;
     private javax.swing.JTextField SubnetMaskQuadFour;
     private javax.swing.JTextField SubnetMaskQuadOne;
     private javax.swing.JTextField SubnetMaskQuadThree;
-    private javax.swing.JLabel WildcardLabel;
     private javax.swing.JTextField WildcardMaskQuadFour;
     private javax.swing.JTextField WildcardMaskQuadOne;
     private javax.swing.JTextField WildcardMaskQuadThree;

@@ -88,7 +88,7 @@ class SubnetMask extends IP {
      * Name:setQuadFour
      * Type:member function
      * Arguments:quadFour: int
-     * Description:chacks to see if variable is in range, then sets it to quadFour
+     * Description:checks to see if variable is in range, then sets it to quadFour
      */
     @Override
     public void setQuadFour(int quadFour) throws IpException, InvalidSubnetException, InvalidWildCardException {

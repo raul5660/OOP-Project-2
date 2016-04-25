@@ -1,7 +1,7 @@
 /*
  * Name:ErrorGui
  * Type:Class
- * Arguments:ErrorGui(), OkButtonActionPerformed, InitCompontents, 
+ * Arguments:ErrorGui(), OkButtonActionPerformed, InitComponents,
  * Description:Displays error message in another frame
  */
 class ErrorGui extends javax.swing.JFrame {
@@ -9,7 +9,7 @@ class ErrorGui extends javax.swing.JFrame {
      * Name:ErrorGui
      * Type:constructor
      * Arguments:Error: String
-     * Description:calls initComponents member function and sets jTextaArea to error
+     * Description:calls initComponents member function and sets jTextArea to error
      */
     ErrorGui(String Error) {
         initComponents();
@@ -21,7 +21,7 @@ class ErrorGui extends javax.swing.JFrame {
      * Arguments:evt: ActionEvent
      * Description:turns off frame visibility
      */
-    private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void OkButtonActionPerformed() {
         this.setVisible(false);
     }
     /*
@@ -34,9 +34,9 @@ class ErrorGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        OkButton = new javax.swing.JButton();
+        javax.swing.JButton okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,12 +46,8 @@ class ErrorGui extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        OkButton.setText("OK");
-        OkButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OkButtonActionPerformed(evt);
-            }
-        });
+        okButton.setText("OK");
+        okButton.addActionListener(evt -> OkButtonActionPerformed());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,7 +57,7 @@ class ErrorGui extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jScrollPane1)
-                                        .addComponent(OkButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -69,15 +65,12 @@ class ErrorGui extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(OkButton))
+                                .addComponent(okButton))
         );
 
         pack();
     }// </editor-fold>
 
-    // Variables declaration - do not modify
-    private javax.swing.JButton OkButton;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration
 }
